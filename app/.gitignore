@@ -47,5 +47,3 @@ bin/
 gradle/
 gradlew
 gradlew.bat
-build.gradle.kts
-settings.gradle.kts
