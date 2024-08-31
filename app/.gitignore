@@ -47,3 +47,8 @@ bin/
 gradle/
 gradlew
 gradlew.bat
+build/generated
+build/install
+build/libs
+build/scripts
+build/tmp
