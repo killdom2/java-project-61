@@ -1,14 +1,11 @@
 package hexlet.code;
 
-import java.util.Scanner;
-
 class GameSelection {
     static void userInput() {
 
         System.out.print("Your choise: ");
 
-        Scanner scan = new Scanner(System.in);
-        var gameChoise = scan.next();
+        var gameChoise = Engine.userInput();
 
         switch (gameChoise) {
             case "0":
@@ -21,8 +18,12 @@ class GameSelection {
                 Cli.greeting();
                 GameEven.game();
                 break;
+            case "3":
+                Cli.greeting();
+                GameCalc.calc();
+                break;
             default:
-                System.out.println("Incorrect number " + gameChoise + ". Let's try again");
+                System.out.println("Incorrect input " + "'" + gameChoise + "'" + ". Let's try again");
                 userInput();
         }
         return;
