@@ -21,7 +21,7 @@ public class GameCalc {
                 case 1:
                     rezult = subtraction(firstNum, secondNum);
                     break;
-                case 2:
+                default:
                     rezult = multiplication(firstNum, secondNum);
                     break;
             }

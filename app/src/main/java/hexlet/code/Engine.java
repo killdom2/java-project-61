@@ -3,7 +3,10 @@ import java.util.Scanner;
 
 public class Engine {
     static boolean isItRight(String userAnswer, String rightAnswer) {
-        var bool = userAnswer.equals(rightAnswer) ? true : false;
+        var bool = false;
+        if (userAnswer.equals(rightAnswer)) {
+            bool = true;
+        }
         return bool;
     }
 
