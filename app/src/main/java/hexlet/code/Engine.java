@@ -1,26 +1,8 @@
 package hexlet.code;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Engine {
-    static boolean isItRight(String userAnswer, String rightAnswer) {
-        var bool = false;
-        if (userAnswer.equals(rightAnswer)) {
-            bool = true;
-        }
-        return bool;
-    }
-
-    static void correctAnswer() {
-        System.out.println("Correct!");
-        return;
-    }
-
-    static void wrongAnswer(String userAnswer, String rightAnswer) {
-        System.out.print("'" + userAnswer + "'" + " is wrong answer ;(.");
-        System.out.println(" Correct answer was " + "'" + rightAnswer + "'.");
-        System.out.println("Let's try again, " + Cli.userName + "!");
-        return;
-    }
 
     static String userInput() {
         Scanner scan = new Scanner(System.in);
@@ -28,20 +10,23 @@ public class Engine {
         return str;
     }
 
-    static int randomNumber() {
-        var number = (int) (Math.random() * 100);
+    static int randomNumber(int val) {
+        Random rnd = new Random();
+        var number = rnd.nextInt(val);
         return number;
     }
 
-    static int conditionIf(String userAnswer, String wrightAnswer, int i) {
-        if (isItRight(userAnswer, wrightAnswer)) {
-            correctAnswer();
+    static int correctOrNot(String userAnswer, String rightAnswer, int i) {
+        if (userAnswer.equals(rightAnswer)) {
+            System.out.println("Correct!");
             i++;
             if (i == 3) {
                 System.out.println("Congratulations, " + Cli.userName + "!");
             }
         } else {
-            wrongAnswer(userAnswer, wrightAnswer);
+            System.out.print("'" + userAnswer + "'" + " is wrong answer ;(.");
+            System.out.println(" Correct answer was " + "'" + rightAnswer + "'.");
+            System.out.println("Let's try again, " + Cli.userName + "!");
             return 3;
         }
         return i;

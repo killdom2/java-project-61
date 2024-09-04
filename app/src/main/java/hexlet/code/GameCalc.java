@@ -3,62 +3,39 @@ package hexlet.code;
 public class GameCalc {
     static void calc() {
 
-        task();
+        System.out.println("What is the result of the expression?");
 
-        var rezult = "";
+        var rezult = 0;
         var i = 0;
+        var difficulty = 25;
+        var numberOfOperators = 3;
 
         while (i < 3) {
-            var firstNum = Engine.randomNumber();
-            var secondNum = Engine.randomNumber();
-            var operator = Engine.randomNumber() % 3;
+            var firstNum = Engine.randomNumber(difficulty);
+            var secondNum = Engine.randomNumber(difficulty);
+            var operator = Engine.randomNumber(numberOfOperators);
             System.out.print("Question: ");
 
             switch (operator) {
                 case 0:
-                    rezult = addition(firstNum, secondNum);
+                    System.out.println(firstNum + " + " +  secondNum);
+                    rezult = firstNum + secondNum;
                     break;
                 case 1:
-                    rezult = subtraction(firstNum, secondNum);
+                    System.out.println(firstNum + " - " +  secondNum);
+                    rezult = firstNum - secondNum;
                     break;
                 default:
-                    rezult = multiplication(firstNum, secondNum);
+                    System.out.println(firstNum + " * " +  secondNum);
+                    rezult = firstNum * secondNum;
                     break;
             }
 
-            rezult += "";
             System.out.print("Your answer: ");
             var userAnswer = Engine.userInput();
 
-            i = Engine.conditionIf(userAnswer, rezult, i);
+            i = Engine.correctOrNot(userAnswer, String.valueOf(rezult), i);
         }
         return;
-    }
-
-    static void task() {
-        System.out.println("What is the result of the expression?");
-        return;
-    }
-
-    static String addition(int a, int b) {
-        System.out.println(a + " + " +  b);
-        var rezult = a + b;
-        var str = rezult + "";
-        return str;
-    }
-
-    static String subtraction(int a, int b) {
-        System.out.println(a + " - " +  b);
-        var rezult = a - b;
-        var str = rezult + "";
-        return str;
-    }
-
-    static String multiplication(int a, int b) {
-        b = (int) (b / 10);
-        System.out.println(a + " * " +  b);
-        var rezult = a * b;
-        var str = rezult + "";
-        return str;
     }
 }
