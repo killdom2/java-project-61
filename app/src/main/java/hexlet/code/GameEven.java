@@ -8,15 +8,15 @@ public class GameEven {
         String even;
         var difficulty = 100;
 
-        var i = 0;
-        while (i < 3) {
+        var gameNum = 0;
+        while (gameNum < 3) {
             var hiddenNumber = Engine.randomNumber(difficulty);
             even = (hiddenNumber % 2 == 0) ? "yes" : "no";
             System.out.print("Question: " + hiddenNumber + "\nYour answer: ");
 
             var answer = Engine.userInput();
 
-            i = Engine.correctOrNot(answer, even, i);
+            gameNum = Engine.correctOrNot(answer, even, gameNum);
         }
         return;
     }

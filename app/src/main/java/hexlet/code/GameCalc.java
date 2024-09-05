@@ -6,11 +6,11 @@ public class GameCalc {
         System.out.println("What is the result of the expression?");
 
         var rezult = 0;
-        var i = 0;
+        var gameNum = 0;
         var difficulty = 25;
         var numberOfOperators = 3;
 
-        while (i < 3) {
+        while (gameNum < 3) {
             var firstNum = Engine.randomNumber(difficulty);
             var secondNum = Engine.randomNumber(difficulty);
             var operator = Engine.randomNumber(numberOfOperators);
@@ -34,7 +34,7 @@ public class GameCalc {
             System.out.print("Your answer: ");
             var userAnswer = Engine.userInput();
 
-            i = Engine.correctOrNot(userAnswer, String.valueOf(rezult), i);
+            gameNum = Engine.correctOrNot(userAnswer, String.valueOf(rezult), gameNum);
         }
         return;
     }

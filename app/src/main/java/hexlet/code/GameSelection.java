@@ -26,6 +26,10 @@ class GameSelection {
                 Cli.greeting();
                 GameDivisor.divisor();
                 break;
+            case "5":
+                Cli.greeting();
+                GameProgression.progression();
+                break;
             default:
                 System.out.println("Incorrect input " + "'" + gameChoise + "'" + ". Let's try again");
                 userInput();

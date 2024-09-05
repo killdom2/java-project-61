@@ -7,18 +7,19 @@ public class GameDivisor {
         System.out.println("Find the greatest common divisor of given numbers.");
         int firstNumber;
         int secondNumber;
-        var i = 0;
+        var gameNum = 0;
         var difficulty = 25;
         int[] numbers = new int[3];
         String userAnswer;
 
-        while (i < 3) {
+        while (gameNum < 3) {
             numbers = randomNumber(difficulty);
             firstNumber = numbers[0];
             secondNumber = numbers[1];
-            System.out.print("Question: " + firstNumber + " " + secondNumber + "\t");
+            System.out.println("Question: " + firstNumber + " " + secondNumber);
+            System.out.print("Your answer: ");
             userAnswer = Engine.userInput();
-            i = Engine.correctOrNot(userAnswer, String.valueOf(numbers[2]), i);
+            gameNum = Engine.correctOrNot(userAnswer, String.valueOf(numbers[2]), gameNum);
         }
         return;
     }
