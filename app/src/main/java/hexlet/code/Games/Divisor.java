@@ -5,7 +5,6 @@ import java.math.BigInteger;
 
 public class Divisor {
     public static void divisor() {
-
         System.out.println("Find the greatest common divisor of given numbers.");
         int firstNumber;
         int secondNumber;
@@ -13,7 +12,6 @@ public class Divisor {
         var difficulty = 25;
         int[] numbers = new int[3];
         String userAnswer;
-
         while (gameNumber < 3) {
             numbers = randomNumber(difficulty);
             firstNumber = numbers[0];
@@ -33,7 +31,7 @@ public class Divisor {
         while (gcd == 1) {
             firstNumber = Engine.randomNumber(difficulty);
             secondNumber = Engine.randomNumber(difficulty);
-            if (firstNumber < 2 || secondNumber < 2 || firstNumber == secondNumber) {
+            if (lessThenTwo(firstNumber, secondNumber)) {
                 gcd = 1;
             } else {
                 gcd = maxDivisor(firstNumber, secondNumber);
@@ -48,5 +46,9 @@ public class Divisor {
         BigInteger bg2 = new BigInteger(String.valueOf(secondNumber));
         var gcd = (bg1.gcd(bg2)).intValue();
         return gcd;
+    }
+
+    static boolean lessThenTwo(int firstNumber, int secondNumber) {
+        return firstNumber < 2 || secondNumber < 2 || firstNumber == secondNumber;
     }
 }

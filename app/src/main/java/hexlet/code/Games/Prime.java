@@ -1,16 +1,12 @@
 package hexlet.code.Games;
-
 import hexlet.code.Engine;
 
 public class Prime {
     public static void prime() {
-
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-
         var rightAnswer = "";
         var difficulty = 100;
         var gameNumber = 0;
-
         while (gameNumber < 3) {
             var number = 0;
             while (number < 2 || number % 2 == 0) {
@@ -30,7 +26,6 @@ public class Prime {
 // https://ru.wikipedia.org/wiki/Перебор_делителей#/media/Файл:Trial_division.jpg
         int i = 2;
         int j = 0;
-
         while (i * i <= num && j != 1) {
             if (num % i == 0) {
                 j = 1;

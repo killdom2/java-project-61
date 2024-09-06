@@ -1,5 +1,4 @@
 package hexlet.code;
-
 import hexlet.code.Games.Calc;
 import hexlet.code.Games.Divisor;
 import hexlet.code.Games.Even;
@@ -8,11 +7,8 @@ import hexlet.code.Games.Progression;
 
 class GameSelection {
     static void userInput() {
-
         System.out.print("Your choise: ");
-
         var gameChoise = Engine.userInput();
-
         switch (gameChoise) {
             case "0":
                 System.out.println("See you ;)");
