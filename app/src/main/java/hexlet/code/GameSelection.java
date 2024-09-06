@@ -30,6 +30,10 @@ class GameSelection {
                 Cli.greeting();
                 GameProgression.progression();
                 break;
+            case "6":
+                Cli.greeting();
+                GamePrime.prime();
+                break;
             default:
                 System.out.println("Incorrect input " + "'" + gameChoise + "'" + ". Let's try again");
                 userInput();

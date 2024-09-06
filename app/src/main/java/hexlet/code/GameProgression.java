@@ -1,7 +1,7 @@
 package hexlet.code;
 
 public class GameProgression {
-    public static void progression() {
+    static void progression() {
 
         System.out.println("What number is missing in the progression?");
         var stepOfProgression = 0;
@@ -11,21 +11,20 @@ public class GameProgression {
         var maxLength = 10;
         var difficulty = 30;
         var i = 0;
-        var gameNum = 0;
+        var gameNumber = 0;
 
-        while (gameNum < 3) {
+        while (gameNumber < 3) {
             do {
                 firstNumber = Engine.randomNumber(difficulty);
                 stepOfProgression = Engine.randomNumber(maxLength);
                 lengthOfProgression = Engine.randomNumber(maxLength);
 
-                if (lengthOfProgression >=5 && lengthOfProgression <=10 && stepOfProgression > 1) {
+                if (lengthOfProgression >= 5 && lengthOfProgression <= 10 && stepOfProgression > 1) {
                     i = 1;
                 } else if (lengthOfProgression < 5 && stepOfProgression > 1) {
                     lengthOfProgression = 10;
                     i = 1;
-                }
-                else {
+                } else {
                     i = 0;
                 }
             } while (i == 0);
@@ -52,7 +51,7 @@ public class GameProgression {
             System.out.print("\nYour answer: ");
             var userAnswer = Engine.userInput();
 
-            gameNum = Engine.correctOrNot(userAnswer, Integer.toString(progression[hiddenNumber]), gameNum);
+            gameNumber = Engine.correctOrNot(userAnswer, Integer.toString(progression[hiddenNumber]), gameNumber);
         }
         return;
     }
