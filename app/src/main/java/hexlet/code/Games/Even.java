@@ -1,7 +1,9 @@
-package hexlet.code;
+package hexlet.code.Games;
 
-public class GameEven {
-    static void game() {
+import hexlet.code.Engine;
+
+public class Even {
+    public static void even() {
 
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 

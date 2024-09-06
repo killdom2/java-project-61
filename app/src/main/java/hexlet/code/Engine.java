@@ -4,19 +4,19 @@ import java.util.Random;
 
 public class Engine {
 
-    static String userInput() {
+    public static String userInput() {
         Scanner scan = new Scanner(System.in);
         String str = scan.nextLine();
         return str;
     }
 
-    static int randomNumber(int val) {
+    public static int randomNumber(int val) {
         Random rnd = new Random();
         var number = rnd.nextInt(val);
         return number;
     }
 
-    static int correctOrNot(String userAnswer, String rightAnswer, int i) {
+    public static int correctOrNot(String userAnswer, String rightAnswer, int i) {
         if (userAnswer.equals(rightAnswer)) {
             System.out.println("Correct!");
             i++;

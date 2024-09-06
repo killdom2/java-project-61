@@ -1,7 +1,9 @@
-package hexlet.code;
+package hexlet.code.Games;
 
-public class GameCalc {
-    static void calc() {
+import hexlet.code.Engine;
+
+public class Calc {
+    public static void calc() {
 
         System.out.println("What is the result of the expression?");
 

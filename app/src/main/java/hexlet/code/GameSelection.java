@@ -1,5 +1,11 @@
 package hexlet.code;
 
+import hexlet.code.Games.Calc;
+import hexlet.code.Games.Divisor;
+import hexlet.code.Games.Even;
+import hexlet.code.Games.Prime;
+import hexlet.code.Games.Progression;
+
 class GameSelection {
     static void userInput() {
 
@@ -16,23 +22,23 @@ class GameSelection {
                 break;
             case "2":
                 Cli.greeting();
-                GameEven.game();
+                Even.even();
                 break;
             case "3":
                 Cli.greeting();
-                GameCalc.calc();
+                Calc.calc();
                 break;
             case "4":
                 Cli.greeting();
-                GameDivisor.divisor();
+                Divisor.divisor();
                 break;
             case "5":
                 Cli.greeting();
-                GameProgression.progression();
+                Progression.progression();
                 break;
             case "6":
                 Cli.greeting();
-                GamePrime.prime();
+                Prime.prime();
                 break;
             default:
                 System.out.println("Incorrect input " + "'" + gameChoise + "'" + ". Let's try again");

@@ -1,7 +1,9 @@
-package hexlet.code;
+package hexlet.code.Games;
 
-public class GamePrime {
-    static void prime() {
+import hexlet.code.Engine;
+
+public class Prime {
+    public static void prime() {
 
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 

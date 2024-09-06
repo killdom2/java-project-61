@@ -1,8 +1,10 @@
-package hexlet.code;
+package hexlet.code.Games;
+import hexlet.code.Engine;
+
 import java.math.BigInteger;
 
-public class GameDivisor {
-    static void divisor() {
+public class Divisor {
+    public static void divisor() {
 
         System.out.println("Find the greatest common divisor of given numbers.");
         int firstNumber;

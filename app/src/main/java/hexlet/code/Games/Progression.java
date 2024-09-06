@@ -1,7 +1,9 @@
-package hexlet.code;
+package hexlet.code.Games;
 
-public class GameProgression {
-    static void progression() {
+import hexlet.code.Engine;
+
+public class Progression {
+    public static void progression() {
 
         System.out.println("What number is missing in the progression?");
         var stepOfProgression = 0;
