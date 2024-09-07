@@ -3,7 +3,7 @@ import hexlet.code.Engine;
 public class Calc {
     public static void calc() {
         System.out.println("What is the result of the expression?");
-        int rezult = 0;
+        int rezult;
         var gameNumber = 0;
         var difficulty = 25;
         var numberOfOperators = 3;
@@ -12,24 +12,23 @@ public class Calc {
             var secondNum = Engine.randomNumber(difficulty);
             var operator = Engine.randomNumber(numberOfOperators);
             System.out.print("Question: ");
-            switch (operator) {
-                case 0:
-                    System.out.println(firstNum + " + " +  secondNum);
-                    rezult = firstNum + secondNum;
-                    break;
-                case 1:
-                    System.out.println(firstNum + " - " +  secondNum);
-                    rezult = firstNum - secondNum;
-                    break;
-                default:
-                    System.out.println(firstNum + " * " +  secondNum);
-                    rezult = firstNum * secondNum;
-                    break;
-            }
+            rezult = switch (operator) {
+                case 0 -> {
+                    System.out.println(firstNum + " + " + secondNum);
+                    yield firstNum + secondNum;
+                }
+                case 1 -> {
+                    System.out.println(firstNum + " - " + secondNum);
+                    yield firstNum - secondNum;
+                }
+                default -> {
+                    System.out.println(firstNum + " * " + secondNum);
+                    yield firstNum * secondNum;
+                }
+            };
             System.out.print("Your answer: ");
             var userAnswer = Engine.userInput();
             gameNumber = Engine.correctOrNot(userAnswer, String.valueOf(rezult), gameNumber);
         }
-        return;
     }
 }

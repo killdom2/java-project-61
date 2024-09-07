@@ -34,7 +34,6 @@ public class Progression {
             var userAnswer = Engine.userInput();
             gameNumber = Engine.correctOrNot(userAnswer, Integer.toString(progression[hiddenNumber]), gameNumber);
         }
-        return;
     }
     static boolean correctLengthAndStep(int lengthOfProgression, int stepOfProgression) {
         return lengthOfProgression >= 5 && lengthOfProgression <= 10 && stepOfProgression > 1;
@@ -50,7 +49,6 @@ public class Progression {
                 System.out.print(progression[i] + " ");
             }
         }
-        return;
     }
     static int[] makeArray(int lengthOfProgression, int firstNumber, int stepOfProgression) {
         var count = 0;

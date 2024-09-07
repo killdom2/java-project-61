@@ -13,6 +13,5 @@ public class Even {
             var answer = Engine.userInput();
             gameNumber = Engine.correctOrNot(answer, even, gameNumber);
         }
-        return;
     }
 }

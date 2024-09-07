@@ -6,14 +6,12 @@ public class Engine {
 
     public static String userInput() {
         Scanner scan = new Scanner(System.in);
-        String str = scan.nextLine();
-        return str;
+        return scan.nextLine();
     }
 
     public static int randomNumber(int val) {
         Random rnd = new Random();
-        var number = rnd.nextInt(val);
-        return number;
+        return rnd.nextInt(val);
     }
 
     public static int correctOrNot(String userAnswer, String rightAnswer, int i) {

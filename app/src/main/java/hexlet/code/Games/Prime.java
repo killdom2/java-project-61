@@ -17,7 +17,6 @@ public class Prime {
             var userAnswer = Engine.userInput();
             gameNumber = Engine.correctOrNot(userAnswer, rightAnswer, gameNumber);
         }
-        return;
     }
     static String isPrime(int num) {
 // Алгоритм перебора делителей

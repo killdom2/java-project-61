@@ -9,7 +9,7 @@ public class Divisor {
         int secondNumber;
         var gameNumber = 0;
         var difficulty = 25;
-        int[] numbers = new int[3];
+        int[] numbers;
         String userAnswer;
         while (gameNumber < 3) {
             numbers = randomNumber(difficulty);
@@ -20,7 +20,6 @@ public class Divisor {
             userAnswer = Engine.userInput();
             gameNumber = Engine.correctOrNot(userAnswer, String.valueOf(numbers[2]), gameNumber);
         }
-        return;
     }
     static int[] randomNumber(int difficulty) {
         int gcd = 1;
@@ -29,20 +28,16 @@ public class Divisor {
         while (gcd == 1) {
             firstNumber = Engine.randomNumber(difficulty);
             secondNumber = Engine.randomNumber(difficulty);
-            if (lessThenTwo(firstNumber, secondNumber)) {
-                gcd = 1;
-            } else {
+            if (!lessThenTwo(firstNumber, secondNumber)) {
                 gcd = maxDivisor(firstNumber, secondNumber);
             }
         }
-        int[] numbers = {firstNumber, secondNumber, gcd};
-        return numbers;
+        return new int[]{firstNumber, secondNumber, gcd};
     }
     static int maxDivisor(int firstNumber, int secondNumber) {
         BigInteger bg1 = new BigInteger(String.valueOf(firstNumber));
         BigInteger bg2 = new BigInteger(String.valueOf(secondNumber));
-        var gcd = (bg1.gcd(bg2)).intValue();
-        return gcd;
+        return (bg1.gcd(bg2)).intValue();
     }
     static boolean lessThenTwo(int firstNumber, int secondNumber) {
         return firstNumber < 2 || secondNumber < 2 || firstNumber == secondNumber;
