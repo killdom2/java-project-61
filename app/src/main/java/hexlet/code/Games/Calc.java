@@ -1,10 +1,9 @@
 package hexlet.code.Games;
 import hexlet.code.Engine;
-
 public class Calc {
     public static void calc() {
         System.out.println("What is the result of the expression?");
-        var rezult = 0;
+        int rezult = 0;
         var gameNumber = 0;
         var difficulty = 25;
         var numberOfOperators = 3;

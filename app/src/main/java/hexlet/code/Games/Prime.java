@@ -1,6 +1,5 @@
 package hexlet.code.Games;
 import hexlet.code.Engine;
-
 public class Prime {
     public static void prime() {
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
@@ -20,7 +19,6 @@ public class Prime {
         }
         return;
     }
-
     static String isPrime(int num) {
 // Алгоритм перебора делителей
 // https://ru.wikipedia.org/wiki/Перебор_делителей#/media/Файл:Trial_division.jpg
