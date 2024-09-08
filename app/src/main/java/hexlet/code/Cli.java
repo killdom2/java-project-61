@@ -2,7 +2,7 @@ package hexlet.code;
 
 class Cli {
 
-    static String userName;
+    private static String userName;
 
     static void greeting() {
 
@@ -10,6 +10,7 @@ class Cli {
         userName = Engine.userInput();
         System.out.println("Hello, " + userName + "!");
     }
+
     public static String getUserName() {
         return userName;
     }
