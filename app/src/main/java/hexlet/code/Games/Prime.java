@@ -4,9 +4,9 @@ public class Prime {
     public static void prime() {
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
         var rightAnswer = "";
-        var difficulty = 100;
+        final var difficulty = 100;
         var gameNumber = 0;
-        while (gameNumber < 3) {
+        while (gameNumber < Engine.getMaxGameNum()) {
             var number = 0;
             while (number < 2 || number % 2 == 0) {
                 number = Engine.randomNumber(difficulty);

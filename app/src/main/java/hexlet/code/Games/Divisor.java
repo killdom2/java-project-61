@@ -8,10 +8,10 @@ public class Divisor {
         int firstNumber;
         int secondNumber;
         var gameNumber = 0;
-        var difficulty = 25;
+        final var difficulty = 25;
         int[] numbers;
         String userAnswer;
-        while (gameNumber < 3) {
+        while (gameNumber < Engine.getMaxGameNum()) {
             numbers = randomNumber(difficulty);
             firstNumber = numbers[0];
             secondNumber = numbers[1];

@@ -4,9 +4,9 @@ public class Even {
     public static void even() {
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         String even;
-        var difficulty = 100;
+        final var difficulty = 100;
         var gameNumber = 0;
-        while (gameNumber < 3) {
+        while (gameNumber < Engine.getMaxGameNum()) {
             var hiddenNumber = Engine.randomNumber(difficulty);
             even = (hiddenNumber % 2 == 0) ? "yes" : "no";
             System.out.print("Question: " + hiddenNumber + "\nYour answer: ");
