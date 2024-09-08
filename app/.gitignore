@@ -45,8 +45,8 @@ bin/
 ../.idea/
 .idea/
 gradle/
-gradlew
-gradlew.bat
+#gradlew
+#gradlew.bat
 build/generated
 build/install
 build/libs
