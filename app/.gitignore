@@ -44,7 +44,7 @@ bin/
 ### My Settings ###
 ../.idea/
 .idea/
-gradle/
+#gradle/
 #gradlew
 #gradlew.bat
 build/generated
