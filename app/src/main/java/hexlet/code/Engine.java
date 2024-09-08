@@ -19,12 +19,12 @@ public class Engine {
             System.out.println("Correct!");
             i++;
             if (i == 3) {
-                System.out.println("Congratulations, " + Cli.userName + "!");
+                System.out.println("Congratulations, " + Cli.getUserName() + "!");
             }
         } else {
             System.out.print("'" + userAnswer + "'" + " is wrong answer ;(.");
             System.out.println(" Correct answer was " + "'" + rightAnswer + "'.");
-            System.out.println("Let's try again, " + Cli.userName + "!");
+            System.out.println("Let's try again, " + Cli.getUserName() + "!");
             return 3;
         }
         return i;
