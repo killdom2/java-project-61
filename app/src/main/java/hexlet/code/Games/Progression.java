@@ -39,12 +39,12 @@ public class Progression {
         Engine.run(questions, rules);
     }
 
-    private static boolean correctLengthAndStep(int length, int step, int MIN_LENGTH, int MAX_LENGTH) {
-        return length >= MIN_LENGTH && length <= MAX_LENGTH && step > 1;
+    private static boolean correctLengthAndStep(int length, int step, int minLength, int maxLength) {
+        return length >= minLength && length <= maxLength && step > 1;
     }
 
-    private static boolean recommendTen(int length, int step, int MIN_LENGTH) {
-        return length < MIN_LENGTH && step > 1;
+    private static boolean recommendTen(int length, int step, int minLength) {
+        return length < minLength && step > 1;
     }
 
     private static String progression(int length, int hiddenNum, int firstNumber, int step) {
