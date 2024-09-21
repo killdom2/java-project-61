@@ -2,7 +2,7 @@ package hexlet.code.Games;
 import hexlet.code.Engine;
 
 public class Progression {
-    static int num;
+    private static int num;
 
     public static void progression() {
 
@@ -12,19 +12,20 @@ public class Progression {
         int length;
         var j = 0;
         var hiddenNum = 0;
-        var maxLength = 10;
-        var difficulty = 30;
-        var questions = new String[3][2];
+        final var MAX_LENGTH = 10;
+        final var MIN_LENGTH = 5;
+        final var DIFFICULTY = 30;
+        var questions = new String[Engine.GAME_NUM][2];
 
         for (var i = 0; i < Engine.GAME_NUM; i++) {
             do {
-                firstNumber = Engine.randomNumber(difficulty);
-                step = Engine.randomNumber(maxLength);
-                length = Engine.randomNumber(maxLength);
-                if (correctLengthAndStep(length, step)) {
+                firstNumber = Engine.randomNumber(DIFFICULTY);
+                step = Engine.randomNumber(MAX_LENGTH);
+                length = Engine.randomNumber(MAX_LENGTH);
+                if (correctLengthAndStep(length, step, MIN_LENGTH, MAX_LENGTH)) {
                     j = 1;
-                } else if (recommendTen(length, step)) {
-                    length = 10;
+                } else if (recommendTen(length, step, MIN_LENGTH)) {
+                    length = MAX_LENGTH;
                     j = 1;
                 } else {
                     j = 0;
@@ -38,12 +39,12 @@ public class Progression {
         Engine.run(questions, rules);
     }
 
-    private static boolean correctLengthAndStep(int length, int step) {
-        return length >= 5 && length <= 10 && step > 1;
+    private static boolean correctLengthAndStep(int length, int step, int MIN_LENGTH, int MAX_LENGTH) {
+        return length >= MIN_LENGTH && length <= MAX_LENGTH && step > 1;
     }
 
-    private static boolean recommendTen(int length, int step) {
-        return length < 5 && step > 1;
+    private static boolean recommendTen(int length, int step, int MIN_LENGTH) {
+        return length < MIN_LENGTH && step > 1;
     }
 
     private static String progression(int length, int hiddenNum, int firstNumber, int step) {

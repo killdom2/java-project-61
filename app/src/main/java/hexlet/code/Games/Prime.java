@@ -6,13 +6,13 @@ public class Prime {
 
         var rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
         var rightAnswer = "";
-        var difficulty = 100;
-        var questions = new String[3][2];
+        final var DIFFICULTY = 100;
+        var questions = new String[Engine.GAME_NUM][2];
 
         for (var i = 0; i < Engine.GAME_NUM; i++) {
             var number = 0;
             while (number < 2 || number % 2 == 0) {
-                number = Engine.randomNumber(difficulty);
+                number = Engine.randomNumber(DIFFICULTY);
             }
             rightAnswer = isPrime(number);
             questions[i][0] = number + "";

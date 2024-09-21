@@ -23,7 +23,7 @@ public class Engine {
                 System.out.print("'" + answer + "'" + " is wrong answer ;(.");
                 System.out.println(" Correct answer was " + "'" + questions[i][1] + "'.");
                 System.out.println("Let's try again, " + Cli.getUserName() + "!");
-                i = 3;
+                i = GAME_NUM;
             }
         }
     }
