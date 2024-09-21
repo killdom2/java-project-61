@@ -1,10 +1,10 @@
 package hexlet.code;
 
-class Cli {
+public class Cli {
 
     private static String userName;
 
-    static void greeting() {
+    public static void greeting() {
 
         System.out.print("Welcome to the Brain Games!\nMay I have your name? ");
         userName = Engine.userInput();

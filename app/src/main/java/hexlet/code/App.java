@@ -1,4 +1,9 @@
 package hexlet.code;
+import hexlet.code.Games.Calc;
+import hexlet.code.Games.Divisor;
+import hexlet.code.Games.Even;
+import hexlet.code.Games.Prime;
+import hexlet.code.Games.Progression;
 
 public class App {
     public static void main(String[] args) {
@@ -11,8 +16,18 @@ public class App {
         System.out.println("5 - Progression");
         System.out.println("6 - Prime");
         System.out.println("0 - Exit");
+        System.out.print("Your choise: ");
 
-        GameSelection.userInput();
-
+        var gameChoise = Engine.userInput();
+        switch (gameChoise) {
+            case "0" -> System.out.println("See you");
+            case "1" -> Cli.greeting();
+            case "2" -> Even.even();
+            case "3" -> Calc.calc();
+            case "4" -> Divisor.divisor();
+            case "5" -> Progression.progression();
+            case "6" -> Prime.prime();
+            default -> System.out.println("Incorrect input " + "'" + gameChoise + "'" + ". Let's try again");
+        }
     }
 }

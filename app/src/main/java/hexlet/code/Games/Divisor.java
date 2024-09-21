@@ -1,26 +1,23 @@
 package hexlet.code.Games;
 import hexlet.code.Engine;
-
 import java.math.BigInteger;
+
 public class Divisor {
     public static void divisor() {
-        System.out.println("Find the greatest common divisor of given numbers.");
-        int firstNumber;
-        int secondNumber;
-        var gameNumber = 0;
-        final var difficulty = 25;
+
+        var rules = "Find the greatest common divisor of given numbers.";
+        var difficulty = 25;
         int[] numbers;
-        String userAnswer;
-        while (gameNumber < Engine.getMaxGameNum()) {
+        var questions = new String[3][2];
+
+        for (var i = 0; i < Engine.GAME_NUM; i++) {
             numbers = randomNumber(difficulty);
-            firstNumber = numbers[0];
-            secondNumber = numbers[1];
-            System.out.println("Question: " + firstNumber + " " + secondNumber);
-            System.out.print("Your answer: ");
-            userAnswer = Engine.userInput();
-            gameNumber = Engine.correctOrNot(userAnswer, String.valueOf(numbers[2]), gameNumber);
+            questions[i][0] = numbers[0] + " " + numbers[1];
+            questions[i][1] = maxDivisor(numbers[0], numbers[1]) + "";
         }
+        Engine.run(questions, rules);
     }
+
     static int[] randomNumber(int difficulty) {
         int gcd = 1;
         int firstNumber = 0;
@@ -34,11 +31,13 @@ public class Divisor {
         }
         return new int[]{firstNumber, secondNumber, gcd};
     }
+
     static int maxDivisor(int firstNumber, int secondNumber) {
         BigInteger bg1 = new BigInteger(String.valueOf(firstNumber));
         BigInteger bg2 = new BigInteger(String.valueOf(secondNumber));
         return (bg1.gcd(bg2)).intValue();
     }
+
     static boolean lessThenTwo(int firstNumber, int secondNumber) {
         return firstNumber < 2 || secondNumber < 2 || firstNumber == secondNumber;
     }

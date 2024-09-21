@@ -1,64 +1,63 @@
 package hexlet.code.Games;
 import hexlet.code.Engine;
+
 public class Progression {
+    static int num;
+
     public static void progression() {
-        System.out.println("What number is missing in the progression?");
+
+        var rules = "What number is missing in the progression?";
         int step;
         int firstNumber;
         int length;
-        final var minLength = 5;
-        final var maxLength = 10;
-        final var minStep = 2;
-        final var difficulty = 30;
-        var i = 0;
-        var gameNumber = 0;
+        var j = 0;
         var hiddenNum = 0;
-        while (gameNumber < Engine.getMaxGameNum()) {
+        var maxLength = 10;
+        var difficulty = 30;
+        var questions = new String[3][2];
+
+        for (var i = 0; i < Engine.GAME_NUM; i++) {
             do {
                 firstNumber = Engine.randomNumber(difficulty);
                 step = Engine.randomNumber(maxLength);
                 length = Engine.randomNumber(maxLength);
-                if (correctLengthAndStep(length, step, minLength, maxLength, minStep)) {
-                    i = 1;
-                } else if (recommendTen(length, step, minLength, minStep)) {
-                    length = maxLength;
-                    i = 1;
+                if (correctLengthAndStep(length, step)) {
+                    j = 1;
+                } else if (recommendTen(length, step)) {
+                    length = 10;
+                    j = 1;
                 } else {
-                    i = 0;
+                    j = 0;
                 }
-            } while (i == 0);
+            } while (j == 0);
 
             hiddenNum = Engine.randomNumber(length);
-            System.out.print("Question: ");
-
-            hiddenNum = printProgression(length, hiddenNum, firstNumber, step);
-
-            System.out.print("\nYour answer: ");
-            var userAnswer = Engine.userInput();
-            gameNumber = Engine.correctOrNot(userAnswer, Integer.toString(hiddenNum), gameNumber);
+            questions[i][0] = progression(length, hiddenNum, firstNumber, step);
+            questions[i][1] = num + "";
         }
+        Engine.run(questions, rules);
     }
 
-    private static boolean correctLengthAndStep(int length, int step, int minLength, int maxLength, int minStep) {
-        return length >= minLength && length <= maxLength && step >= minStep;
+    private static boolean correctLengthAndStep(int length, int step) {
+        return length >= 5 && length <= 10 && step > 1;
     }
 
-    private static boolean recommendTen(int length, int step, int minLength, int minStep) {
-        return length < minLength && step >= minStep;
+    private static boolean recommendTen(int length, int step) {
+        return length < 5 && step > 1;
     }
 
-    private static int printProgression(int length, int hiddenNum, int firstNumber, int step) {
-        var num = 0;
+    private static String progression(int length, int hiddenNum, int firstNumber, int step) {
+        var result = "";
         for (int i = 0; i < length; i++) {
             if (i == hiddenNum) {
-                System.out.print(".. ");
+                result += ".. ";
                 num = firstNumber;
             } else {
-                System.out.print(firstNumber + " ");
+                result += firstNumber + " ";
             }
             firstNumber += step;
         }
-        return num;
+        return result;
     }
 }
 

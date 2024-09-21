@@ -1,26 +1,30 @@
 package hexlet.code.Games;
 import hexlet.code.Engine;
+
 public class Prime {
     public static void prime() {
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+
+        var rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
         var rightAnswer = "";
-        final var difficulty = 100;
-        var gameNumber = 0;
-        while (gameNumber < Engine.getMaxGameNum()) {
+        var difficulty = 100;
+        var questions = new String[3][2];
+
+        for (var i = 0; i < Engine.GAME_NUM; i++) {
             var number = 0;
             while (number < 2 || number % 2 == 0) {
                 number = Engine.randomNumber(difficulty);
             }
-            System.out.println("Question: " + number);
-            System.out.print("Your answer: ");
             rightAnswer = isPrime(number);
-            var userAnswer = Engine.userInput();
-            gameNumber = Engine.correctOrNot(userAnswer, rightAnswer, gameNumber);
+            questions[i][0] = number + "";
+            questions[i][1] = rightAnswer;
         }
+        Engine.run(questions, rules);
     }
+
+    // Алгоритм перебора делителей
+    // https://ru.wikipedia.org/wiki/Перебор_делителей#/media/Файл:Trial_division.jpg
     static String isPrime(int num) {
-// Алгоритм перебора делителей
-// https://ru.wikipedia.org/wiki/Перебор_делителей#/media/Файл:Trial_division.jpg
+
         int i = 2;
         int j = 0;
         while (i * i <= num && j != 1) {

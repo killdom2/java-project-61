@@ -1,17 +1,18 @@
 package hexlet.code.Games;
 import hexlet.code.Engine;
+
 public class Even {
     public static void even() {
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        String even;
+
+        var rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
         final var difficulty = 100;
-        var gameNumber = 0;
-        while (gameNumber < Engine.getMaxGameNum()) {
-            var hiddenNumber = Engine.randomNumber(difficulty);
-            even = (hiddenNumber % 2 == 0) ? "yes" : "no";
-            System.out.print("Question: " + hiddenNumber + "\nYour answer: ");
-            var answer = Engine.userInput();
-            gameNumber = Engine.correctOrNot(answer, even, gameNumber);
+        var questions = new String[3][2];
+
+        for (var i = 0; i < Engine.GAME_NUM; i++) {
+            var num = Engine.randomNumber(difficulty);
+            questions[i][0] = num + "";
+            questions[i][1] = ((num % 2) == 0) ? "yes" : "no";
         }
+        Engine.run(questions, rules);
     }
 }
