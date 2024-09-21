@@ -6,12 +6,12 @@ public class Divisor {
     public static void divisor() {
 
         var rules = "Find the greatest common divisor of given numbers.";
-        final var DIFFICULTY = 25;
+        final var difficulty = 25;
         int[] numbers;
         var questions = new String[Engine.GAME_NUM][2];
 
         for (var i = 0; i < Engine.GAME_NUM; i++) {
-            numbers = randomNumber(DIFFICULTY);
+            numbers = randomNumber(difficulty);
             questions[i][0] = numbers[0] + " " + numbers[1];
             questions[i][1] = maxDivisor(numbers[0], numbers[1]) + "";
         }

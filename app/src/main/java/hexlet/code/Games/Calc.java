@@ -6,13 +6,13 @@ public class Calc {
 
         var rules = "What is the result of the expression?";
         int rezult;
-        final var DIFFICULTY = 25;
+        final var difficulty = 25;
         final var numberOfOperators = 3;
         var questions = new String[Engine.GAME_NUM][2];
 
         for (var i = 0; i < Engine.GAME_NUM; i++) {
-            var firstNum = Engine.randomNumber(DIFFICULTY);
-            var secondNum = Engine.randomNumber(DIFFICULTY);
+            var firstNum = Engine.randomNumber(difficulty);
+            var secondNum = Engine.randomNumber(difficulty);
             var operator = Engine.randomNumber(numberOfOperators);
             String question;
 
@@ -26,7 +26,7 @@ public class Calc {
                     yield firstNum - secondNum;
                 }
                 default -> {
-                    question = firstNum + " * " + secondNum;;
+                    question = firstNum + " * " + secondNum;
                     yield firstNum * secondNum;
                 }
             };

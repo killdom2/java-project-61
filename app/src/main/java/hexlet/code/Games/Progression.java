@@ -12,20 +12,20 @@ public class Progression {
         int length;
         var j = 0;
         var hiddenNum = 0;
-        final var MAX_LENGTH = 10;
-        final var MIN_LENGTH = 5;
-        final var DIFFICULTY = 30;
+        final var maxLength = 10;
+        final var minLength = 5;
+        final var difficulty = 30;
         var questions = new String[Engine.GAME_NUM][2];
 
         for (var i = 0; i < Engine.GAME_NUM; i++) {
             do {
-                firstNumber = Engine.randomNumber(DIFFICULTY);
-                step = Engine.randomNumber(MAX_LENGTH);
-                length = Engine.randomNumber(MAX_LENGTH);
-                if (correctLengthAndStep(length, step, MIN_LENGTH, MAX_LENGTH)) {
+                firstNumber = Engine.randomNumber(difficulty);
+                step = Engine.randomNumber(maxLength);
+                length = Engine.randomNumber(maxLength);
+                if (correctLengthAndStep(length, step, minLength, maxLength)) {
                     j = 1;
-                } else if (recommendTen(length, step, MIN_LENGTH)) {
-                    length = MAX_LENGTH;
+                } else if (recommendTen(length, step, minLength)) {
+                    length = maxLength;
                     j = 1;
                 } else {
                     j = 0;
