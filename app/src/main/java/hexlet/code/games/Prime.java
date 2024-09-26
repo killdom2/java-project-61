@@ -1,24 +1,33 @@
-package hexlet.code.Games;
+package hexlet.code.games;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Prime {
-    public static void prime() {
+
+    public static final int DIFFICULTY = 100;
+    public static void run() {
 
         var rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        var questions = generateRoundData();
+
+        Engine.run(questions, rules);
+    }
+
+    public static String[][] generateRoundData() {
+
         var rightAnswer = "";
-        final var difficulty = 100;
         var questions = new String[Engine.GAME_NUM][2];
 
         for (var i = 0; i < Engine.GAME_NUM; i++) {
             var number = 0;
             while (number < 2 || number % 2 == 0) {
-                number = Engine.randomNumber(difficulty);
+                number = Utils.generateRandom(DIFFICULTY);
             }
             rightAnswer = isPrime(number);
             questions[i][0] = number + "";
             questions[i][1] = rightAnswer;
         }
-        Engine.run(questions, rules);
+        return questions;
     }
 
     // Алгоритм перебора делителей

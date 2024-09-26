@@ -1,9 +1,10 @@
 package hexlet.code;
-import hexlet.code.Games.Calc;
-import hexlet.code.Games.Divisor;
-import hexlet.code.Games.Even;
-import hexlet.code.Games.Prime;
-import hexlet.code.Games.Progression;
+import hexlet.code.games.Even;
+import hexlet.code.games.Calc;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
@@ -18,15 +19,17 @@ public class App {
         System.out.println("0 - Exit");
         System.out.print("Your choise: ");
 
-        var gameChoise = Engine.userInput();
+        Scanner scan = new Scanner(System.in);
+        var gameChoise = scan.nextLine();
+
         switch (gameChoise) {
-            case "0" -> System.out.println("See you");
+            case "0" -> System.out.println("Exit");
             case "1" -> Cli.greeting();
-            case "2" -> Even.even();
-            case "3" -> Calc.calc();
-            case "4" -> Divisor.divisor();
-            case "5" -> Progression.progression();
-            case "6" -> Prime.prime();
+            case "2" -> Even.run();
+            case "3" -> Calc.run();
+            case "4" -> GCD.run();
+            case "5" -> Progression.run();
+            case "6" -> Prime.run();
             default -> System.out.println("Incorrect input " + "'" + gameChoise + "'" + ". Let's try again");
         }
     }

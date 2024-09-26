@@ -1,19 +1,28 @@
-package hexlet.code.Games;
+package hexlet.code.games;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Calc {
-    public static void calc() {
+
+    public static final int DIFFICULTY = 25;
+    public static final int NUMBER_OF_OPERATORS = 3;
+    public static void run() {
 
         var rules = "What is the result of the expression?";
+        var questions = generateRoundData();
+
+        Engine.run(questions, rules);
+    }
+
+    public static String[][] generateRoundData() {
+
         int rezult;
-        final var difficulty = 25;
-        final var numberOfOperators = 3;
         var questions = new String[Engine.GAME_NUM][2];
 
         for (var i = 0; i < Engine.GAME_NUM; i++) {
-            var firstNum = Engine.randomNumber(difficulty);
-            var secondNum = Engine.randomNumber(difficulty);
-            var operator = Engine.randomNumber(numberOfOperators);
+            var firstNum = Utils.generateRandom(DIFFICULTY);
+            var secondNum = Utils.generateRandom(DIFFICULTY);
+            var operator = Utils.generateRandom(NUMBER_OF_OPERATORS);
             String question;
 
             rezult = switch (operator) {
@@ -33,6 +42,6 @@ public class Calc {
             questions[i][0] = question;
             questions[i][1] = rezult + "";
         }
-        Engine.run(questions, rules);
+        return questions;
     }
 }

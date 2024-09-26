@@ -1,18 +1,27 @@
-package hexlet.code.Games;
+package hexlet.code.games;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Even {
-    public static void even() {
+
+    public static final int DIFFICULTY = 100;
+    public static void run() {
 
         var rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-        final var difficulty = 100;
+        var questions = generateRoundData();
+
+        Engine.run(questions, rules);
+    }
+
+    public static String[][] generateRoundData() {
+
         var questions = new String[Engine.GAME_NUM][2];
 
         for (var i = 0; i < Engine.GAME_NUM; i++) {
-            var num = Engine.randomNumber(difficulty);
+            var num = Utils.generateRandom(DIFFICULTY);
             questions[i][0] = num + "";
             questions[i][1] = ((num % 2) == 0) ? "yes" : "no";
         }
-        Engine.run(questions, rules);
+        return questions;
     }
 }
