@@ -9,7 +9,7 @@ public class GCD {
     public static void run() {
 
         var rules = "Find the greatest common divisor of given numbers.";
-        var questions = new String[Engine.MAX_NUMBER_OF_GAMES][2];
+        var questions = Utils.getQestions();
 
         for (var i = 0; i < Engine.MAX_NUMBER_OF_GAMES; i++) {
             questions[i] = generateRoundData();

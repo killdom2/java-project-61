@@ -8,7 +8,7 @@ public class Calc {
     public static void run() {
 
         var rules = "What is the result of the expression?";
-        var questions = new String[Engine.MAX_NUMBER_OF_GAMES][2];
+        var questions = Utils.getQestions();
 
         for (var i = 0; i < Engine.MAX_NUMBER_OF_GAMES; i++) {
             questions[i] = generateRoundData();

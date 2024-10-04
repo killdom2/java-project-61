@@ -8,7 +8,7 @@ public class Prime {
     public static void run() {
 
         var rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        var questions = new String[Engine.MAX_NUMBER_OF_GAMES][2];
+        var questions = Utils.getQestions();
 
         for (var i = 0; i < Engine.MAX_NUMBER_OF_GAMES; i++) {
             questions[i] = generateRoundData();
