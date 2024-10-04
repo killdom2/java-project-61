@@ -4,44 +4,36 @@ import hexlet.code.Utils;
 
 public class Calc {
 
-    public static final int DIFFICULTY = 25;
-    public static final int NUMBER_OF_OPERATORS = 3;
+    public static final int MAX_RANDOM_NUMBER = 25;
     public static void run() {
 
         var rules = "What is the result of the expression?";
-        var questions = generateRoundData();
+        var questions = new String[Engine.MAX_NUMBER_OF_GAMES][2];
+
+        for (var i = 0; i < Engine.MAX_NUMBER_OF_GAMES; i++) {
+            questions[i] = generateRoundData();
+        }
 
         Engine.run(questions, rules);
     }
 
-    public static String[][] generateRoundData() {
+    public static String[] generateRoundData() {
 
-        int rezult;
-        var questions = new String[Engine.GAME_NUM][2];
+        var question = new String[2];
+        var operators = new char[]{'+', '-', '*'};
 
-        for (var i = 0; i < Engine.GAME_NUM; i++) {
-            var firstNum = Utils.generateRandom(DIFFICULTY);
-            var secondNum = Utils.generateRandom(DIFFICULTY);
-            var operator = Utils.generateRandom(NUMBER_OF_OPERATORS);
-            String question;
+        var firstNum = Utils.generateRandom(MAX_RANDOM_NUMBER);
+        var secondNum = Utils.generateRandom(MAX_RANDOM_NUMBER);
+        var operator = operators[Utils.generateRandom(operators.length)];
 
-            rezult = switch (operator) {
-                case 0 -> {
-                    question = firstNum + " + " + secondNum;
-                    yield firstNum + secondNum;
-                }
-                case 1 -> {
-                    question = firstNum + " - " + secondNum;
-                    yield firstNum - secondNum;
-                }
-                default -> {
-                    question = firstNum + " * " + secondNum;
-                    yield firstNum * secondNum;
-                }
-            };
-            questions[i][0] = question;
-            questions[i][1] = rezult + "";
-        }
-        return questions;
+        question[0] = firstNum + " " + operator + " " + secondNum;
+
+        question[1] = switch (operator) {
+            case '+' -> String.valueOf(firstNum + secondNum);
+            case '-' -> String.valueOf(firstNum - secondNum);
+            default -> String.valueOf(firstNum * secondNum);
+        };
+
+        return question;
     }
 }

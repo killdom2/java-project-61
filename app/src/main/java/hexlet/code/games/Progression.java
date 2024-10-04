@@ -9,45 +9,38 @@ public class Progression {
     public static final int MAX_LENGTH = 10;
     public static final int MIN_STEP = 2;
     public static final int MAX_STEP = 8;
-    public static final int DIFFICULTY = 30;
+    public static final int MAX_RANDOM_NUMBER = 30;
 
     public static void run() {
 
         var rules = "What number is missing in the progression?";
-        var questions = generateRoundData();
+        int step;
+        int firstNumber;
+        int length;
+        var questions = new String[Engine.MAX_NUMBER_OF_GAMES][2];
+
+        for (var i = 0; i < Engine.MAX_NUMBER_OF_GAMES; i++) {
+
+            firstNumber = Utils.generateRandom(MAX_RANDOM_NUMBER);
+            step = Utils.generateRandom(MAX_STEP) + MIN_STEP;
+            length = Utils.generateRandom(LENGTH_OF_PROGRESSION);
+
+            if (length < MIN_LENGTH) {  // В задании есть условие: "Рекомендуемая длина 10 чисел"
+                length = MAX_LENGTH;
+            }
+
+            var question = generateRoundData(length, firstNumber, step);
+            questions[i][0] = question[0];
+            questions[i][1] = question[1];
+        }
 
         Engine.run(questions, rules);
     }
 
-    public static String[][] generateRoundData() {
+    public static String[] generateRoundData(int length, int firstNumber, int step) {
 
-        int step;
-        int firstNumber;
-        int length;
-        var hiddenNum = 0;
-        var questions = new String[Engine.GAME_NUM][2];
-
-        for (var i = 0; i < Engine.GAME_NUM; i++) {
-
-            firstNumber = Utils.generateRandom(DIFFICULTY);
-            step = Utils.generateRandom(MAX_STEP) + MIN_STEP;
-            length = Utils.generateRandom(LENGTH_OF_PROGRESSION);
-
-            if (length < MIN_LENGTH) {
-                length = MAX_LENGTH;
-            }
-
-            hiddenNum = Utils.generateRandom(length);
-
-            var question = generateProgression(length, hiddenNum, firstNumber, step);
-            questions[i][0] = question[0];
-            questions[i][1] = question[1];
-        }
-        return questions;
-    }
-
-    private static String[] generateProgression(int length, int hiddenNum, int firstNumber, int step) {
         var question = new String[]{"", ""};
+        var hiddenNum = Utils.generateRandom(length);
 
         for (int i = 0; i < length; i++) {
             if (i == hiddenNum) {

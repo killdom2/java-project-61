@@ -5,49 +5,36 @@ import java.math.BigInteger;
 
 public class GCD {
 
-    public static final int DIFFICULTY = 25;
+    public static final int MAX_RANDOM_NUMBER = 25;
     public static void run() {
 
         var rules = "Find the greatest common divisor of given numbers.";
-        var questions = generateRoundData();
+        var questions = new String[Engine.MAX_NUMBER_OF_GAMES][2];
+
+        for (var i = 0; i < Engine.MAX_NUMBER_OF_GAMES; i++) {
+            questions[i] = generateRoundData();
+        }
 
         Engine.run(questions, rules);
     }
 
-    public static String[][] generateRoundData() {
+    public static String[] generateRoundData() {
 
-        int[] numbers;
-        var questions = new String[Engine.GAME_NUM][2];
+        var question = new String[2];
 
-        for (var i = 0; i < Engine.GAME_NUM; i++) {
-            numbers = generateRandom();
-            questions[i][0] = numbers[0] + " " + numbers[1];
-            questions[i][1] = findMaxDivisor(numbers[0], numbers[1]) + "";
-        }
-        return questions;
-    }
+        int firstNumber = Utils.generateRandom(MAX_RANDOM_NUMBER);
+        int secondNumber = Utils.generateRandom(MAX_RANDOM_NUMBER);
+        int gcd = findMaxDivisor(firstNumber, secondNumber);
 
-    static int[] generateRandom() {
-        int gcd = 1;
-        int firstNumber = 0;
-        int secondNumber = 0;
-        while (gcd == 1) {
-            firstNumber = Utils.generateRandom(DIFFICULTY);
-            secondNumber = Utils.generateRandom(DIFFICULTY);
-            if (!isLessThenTwo(firstNumber, secondNumber)) {
-                gcd = findMaxDivisor(firstNumber, secondNumber);
-            }
-        }
-        return new int[]{firstNumber, secondNumber, gcd};
+        question[0] = firstNumber + " " + secondNumber;
+        question[1] = String.valueOf(gcd);
+
+        return question;
     }
 
     static int findMaxDivisor(int firstNumber, int secondNumber) {
         BigInteger bg1 = new BigInteger(String.valueOf(firstNumber));
         BigInteger bg2 = new BigInteger(String.valueOf(secondNumber));
         return (bg1.gcd(bg2)).intValue();
-    }
-
-    static boolean isLessThenTwo(int firstNumber, int secondNumber) {
-        return firstNumber < 2 || secondNumber < 2 || firstNumber == secondNumber;
     }
 }

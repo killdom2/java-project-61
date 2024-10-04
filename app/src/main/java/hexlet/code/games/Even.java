@@ -4,24 +4,31 @@ import hexlet.code.Utils;
 
 public class Even {
 
-    public static final int DIFFICULTY = 100;
+    public static final int MAX_RANDOM_NUMBER = 100;
     public static void run() {
 
         var rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-        var questions = generateRoundData();
+        var questions = new String[Engine.MAX_NUMBER_OF_GAMES][2];
+
+        for (var i = 0; i < Engine.MAX_NUMBER_OF_GAMES; i++) {
+            questions[i] = generateRoundData();
+        }
 
         Engine.run(questions, rules);
     }
 
-    public static String[][] generateRoundData() {
+    public static String[] generateRoundData() {
 
-        var questions = new String[Engine.GAME_NUM][2];
+        var question = new String[2];
 
-        for (var i = 0; i < Engine.GAME_NUM; i++) {
-            var num = Utils.generateRandom(DIFFICULTY);
-            questions[i][0] = num + "";
-            questions[i][1] = ((num % 2) == 0) ? "yes" : "no";
-        }
-        return questions;
+        var num = Utils.generateRandom(MAX_RANDOM_NUMBER);
+        question[0] = num + "";
+        question[1] = isEven(num) ? "yes" : "no";
+
+        return question;
+    }
+
+    public static boolean isEven(int num) {
+        return num % 2 == 0;
     }
 }

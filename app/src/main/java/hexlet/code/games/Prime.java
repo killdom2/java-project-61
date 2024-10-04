@@ -4,35 +4,38 @@ import hexlet.code.Utils;
 
 public class Prime {
 
-    public static final int DIFFICULTY = 100;
+    public static final int MAX_RANDOM_NUMBER = 100;
     public static void run() {
 
         var rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        var questions = generateRoundData();
+        var questions = new String[Engine.MAX_NUMBER_OF_GAMES][2];
+
+        for (var i = 0; i < Engine.MAX_NUMBER_OF_GAMES; i++) {
+            questions[i] = generateRoundData();
+        }
 
         Engine.run(questions, rules);
     }
 
-    public static String[][] generateRoundData() {
+    public static String[] generateRoundData() {
 
         var rightAnswer = "";
-        var questions = new String[Engine.GAME_NUM][2];
+        var question = new String[2];
 
-        for (var i = 0; i < Engine.GAME_NUM; i++) {
-            var number = 0;
-            while (number < 2 || number % 2 == 0) {
-                number = Utils.generateRandom(DIFFICULTY);
-            }
-            rightAnswer = isPrime(number);
-            questions[i][0] = number + "";
-            questions[i][1] = rightAnswer;
+        var number = 0;
+        while (number < 2 || number % 2 == 0) {
+            number = Utils.generateRandom(MAX_RANDOM_NUMBER);
         }
-        return questions;
+        rightAnswer = isPrime(number) ? "yes" : "no";
+        question[0] = number + "";
+        question[1] = rightAnswer;
+
+        return question;
     }
 
     // Алгоритм перебора делителей
     // https://ru.wikipedia.org/wiki/Перебор_делителей#/media/Файл:Trial_division.jpg
-    static String isPrime(int num) {
+    static boolean isPrime(int num) {
 
         int i = 2;
         int j = 0;
@@ -42,9 +45,6 @@ public class Prime {
             }
             i++;
         }
-        if (j != 1) {
-            return "yes";
-        }
-        return "no";
+        return j != 1;
     }
 }
