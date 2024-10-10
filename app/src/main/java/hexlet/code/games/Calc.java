@@ -5,16 +5,17 @@ import hexlet.code.Utils;
 public class Calc {
 
     public static final int MAX_RANDOM_NUMBER = 25;
+    public static final String RULES = "What is the result of the expression?";
+
     public static void run() {
 
-        var rules = "What is the result of the expression?";
-        var questions = Utils.getQestions();
+        var questions = new String[Engine.MAX_NUMBER_OF_GAMES][2];
 
         for (var i = 0; i < Engine.MAX_NUMBER_OF_GAMES; i++) {
             questions[i] = generateRoundData();
         }
 
-        Engine.run(questions, rules);
+        Engine.run(questions, RULES);
     }
 
     public static String[] generateRoundData() {
@@ -27,13 +28,20 @@ public class Calc {
         var operator = operators[Utils.generateRandom(operators.length)];
 
         question[0] = firstNum + " " + operator + " " + secondNum;
-
-        question[1] = switch (operator) {
-            case '+' -> String.valueOf(firstNum + secondNum);
-            case '-' -> String.valueOf(firstNum - secondNum);
-            default -> String.valueOf(firstNum * secondNum);
-        };
+        question[1] = String.valueOf(calculatingTheValue(firstNum, secondNum, operator));
 
         return question;
     }
+
+    public static int calculatingTheValue(int firstNum, int secondNum, char operator) {
+
+        return switch (operator) {
+            case '+' -> firstNum + secondNum;
+            case '-' -> firstNum - secondNum;
+            case '*' -> firstNum * secondNum;
+            default -> throw new RuntimeException("Неизвестный оператор");
+        };
+    }
 }
+
+

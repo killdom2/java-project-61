@@ -6,16 +6,17 @@ import java.math.BigInteger;
 public class GCD {
 
     public static final int MAX_RANDOM_NUMBER = 25;
+    public static final String RULES = "Find the greatest common divisor of given numbers.";
+
     public static void run() {
 
-        var rules = "Find the greatest common divisor of given numbers.";
-        var questions = Utils.getQestions();
+        var questions = new String[Engine.MAX_NUMBER_OF_GAMES][2];
 
         for (var i = 0; i < Engine.MAX_NUMBER_OF_GAMES; i++) {
             questions[i] = generateRoundData();
         }
 
-        Engine.run(questions, rules);
+        Engine.run(questions, RULES);
     }
 
     public static String[] generateRoundData() {

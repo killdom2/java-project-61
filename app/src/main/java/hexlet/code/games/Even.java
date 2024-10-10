@@ -5,16 +5,17 @@ import hexlet.code.Utils;
 public class Even {
 
     public static final int MAX_RANDOM_NUMBER = 100;
+    public static final String RULES = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+
     public static void run() {
 
-        var rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-        var questions = Utils.getQestions();
+        var questions = new String[Engine.MAX_NUMBER_OF_GAMES][2];
 
         for (var i = 0; i < Engine.MAX_NUMBER_OF_GAMES; i++) {
             questions[i] = generateRoundData();
         }
 
-        Engine.run(questions, rules);
+        Engine.run(questions, RULES);
     }
 
     public static String[] generateRoundData() {
