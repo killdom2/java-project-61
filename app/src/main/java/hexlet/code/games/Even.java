@@ -23,7 +23,7 @@ public class Even {
         var question = new String[2];
 
         var num = Utils.generateRandom(MAX_RANDOM_NUMBER);
-        question[0] = num + "";
+        question[0] = Integer.toString(num);
         question[1] = isEven(num) ? "yes" : "no";
 
         return question;
