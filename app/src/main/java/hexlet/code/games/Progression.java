@@ -40,6 +40,7 @@ public class Progression {
             question[0] = String.join(" ", question[0], number);
         }
 
+        question[0] = question[0].trim();
         return question;
     }
 
