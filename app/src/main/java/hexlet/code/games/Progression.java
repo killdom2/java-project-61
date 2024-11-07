@@ -36,11 +36,7 @@ public class Progression {
         question[1] = progression[hiddenNum];
         progression[hiddenNum] = "..";
 
-        for (String number : progression) {
-            question[0] = String.join(" ", question[0], number);
-        }
-
-        question[0] = question[0].trim();
+        question[0] = String.join(" ", progression);
         return question;
     }
 
