@@ -2,12 +2,12 @@ package hexlet.code;
 import java.util.Random;
 
 public class Utils {
-    public static Random rnd = new Random();
+    private static final Random RND = new Random();
 
     public static int generateRandom(int max) {
-        return rnd.nextInt(max);
+        return RND.nextInt(max);
     }
     public static int generateRandom(int min, int range) {
-        return rnd.nextInt(range) + min;
+        return RND.nextInt(range) + min;
     }
 }
